@@ -1,0 +1,2 @@
+recursive-include logy/static *
+recursive-include logy/templates *

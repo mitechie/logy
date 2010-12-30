@@ -33,7 +33,7 @@ setup(
     packages=['logy'],
     package_data={
         'logy': [
-            'template/*',
+            'templates/*',
             'static/*'
         ]
     },
