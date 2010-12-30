@@ -9,7 +9,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <title py:replace="''">Your title goes here</title>
     <meta py:replace="select('*')"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="${url_for('static', filename='css/style.css')}" />
 </head>
 
 <body py:match="body" py:attrs="select('@*')">
@@ -19,5 +19,11 @@
   </div>
 
   <div py:replace="select('*|text()')"/>
+  
+  <a href="http://flask.pocoo.org/"><img
+     src="http://flask.pocoo.org/static/badges/flask-powered.png"
+     border="0"
+     alt="Flask powered"
+     title="Flask powered" /></a>
 </body>
 </html>

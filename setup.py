@@ -31,6 +31,12 @@ setup(
     url='https://victorlin@bitbucket.org/victorlin/logy',
     license='MIT',
     packages=['logy'],
+    package_data={
+        'logy': [
+            'template/*',
+            'static/*'
+        ]
+    },
     install_requires=[
         'Flask',
         'Flask-Genshi'

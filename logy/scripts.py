@@ -28,4 +28,8 @@ class ServeCommand(Command):
     
     def run(self):
         from logy.core import app
-        app.run(debug=True, use_reloader=False)
+        app.run(debug=app.config['DEBUG'], 
+                host=app.config['SERVER_HOSTNAME'],
+                port=app.config['SERVER_PORT'],
+                use_reloader=app.config['SERVER_USE_RELOADER'],
+                use_debugger=app.config['SERVER_USE_DEBUGGER'])
