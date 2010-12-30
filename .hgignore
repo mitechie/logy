@@ -1,0 +1,6 @@
+glob:*.pyc
+glob:.project
+glob:.pydevproject
+glob:.settings/
+glob:logy.egg-info/
+glob:*.db
