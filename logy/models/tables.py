@@ -1,4 +1,5 @@
-from sqlalchemy import Column, ForeignKey, Integer, Unicode, String
+from sqlalchemy import Column, ForeignKey, Integer, Unicode, String, DateTime, \
+    Float
 from sqlalchemy.orm import relationship
 
 from logy.models import database
@@ -10,9 +11,25 @@ class Record(database.Base):
         ForeignKey('app.name', onupdate='CASCADE', ondelete='CASCADE'), 
         nullable=False)
 
-    name = Column(Unicode())
-    msg = Column(Unicode())
+    # Refnerence to:
+    # http://docs.python.org/library/logging.html#formatter-objects
+    name = Column(Unicode(), nullable=False)
+    levelno = Column(Integer(), nullable=False)
+    levelname = Column(Unicode(), nullable=False)
+    pathname = Column(Unicode())
+    filename = Column(Unicode(), nullable=False)
+    module = Column(Unicode(), nullable=False)
+    funcName = Column(Unicode(), nullable=False)
+    lineno = Column(Integer())
+    created = Column(DateTime(), nullable=False)
+    thread = Column(Integer())
+    threadName = Column(Unicode())
+    process = Column(Integer())
+    processName = Column(Unicode())
+    message = Column(Unicode(), nullable=False)
+    
     username = Column(Unicode())
+    traceback = Column(Unicode())
 
     def __init__(self, **kwargs):
         for key, value in kwargs.iteritems():

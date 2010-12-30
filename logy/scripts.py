@@ -12,7 +12,7 @@ class InitdbCommand(Command):
     
     def run(self):
         import logy.core
-        from logy import database
+        from logy.models import database
         database.init_db()
         print 'Done.'
         

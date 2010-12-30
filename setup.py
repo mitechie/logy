@@ -32,7 +32,8 @@ setup(
     license='MIT',
     packages=['logy'],
     install_requires=[
-        'flask'
+        'Flask',
+        'Flask-Genshi'
     ],
     **extra
 )

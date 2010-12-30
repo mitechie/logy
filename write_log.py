@@ -6,7 +6,7 @@ rootLogger = logging.getLogger('')
 rootLogger.setLevel(logging.DEBUG)
 
 sream_handler = logging.StreamHandler()
-http_handler = ex_loghandlers.ExHTTPHandler('localhost:5000', '/sink/api_key/myapp', 'POST')
+http_handler = ex_loghandlers.ExHTTPHandler('localhost:5000', '/sink/TEST/myapp', 'POST')
 # don't bother with a formatter, since a socket handler sends the event as
 # an unformatted pickle
 rootLogger.addHandler(sream_handler)
