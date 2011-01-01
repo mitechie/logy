@@ -38,8 +38,15 @@ setup(
         ]
     },
     install_requires=[
+        'distribute',
         'Flask',
         'Flask-Genshi'
     ],
+    entry_points = {
+        'console_scripts': [
+            'logy_initdb = logy.scripts:initdb', 
+            'logy_run = logy.scripts:run_logy',
+        ]
+    },
     **extra
 )
