@@ -26,3 +26,10 @@ API_KEYS = [
 
 # logging format to display
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+
+# user need be authenticated to view page
+NEED_AUTH = False
+
+USERS = {
+    'logy': 'logypass'
+}

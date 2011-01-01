@@ -29,4 +29,6 @@ logger2.error('The five boxing wizards jump quickly.')
 try:
     raise Exception("Boom")
 except:
-    logger1.error("Huston, we've got a problem", exc_info=True) 
+    logger1.fatal("Huston, we've got a problem", exc_info=True) 
+    
+logger1.info('Everything goes fine, now.')
