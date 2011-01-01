@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from ez_setup import use_setuptools
     use_setuptools()
-    from setuptools import setup
+    from setuptools import setup, find_packages
 
 try:
     from logy import version
@@ -36,19 +36,20 @@ setup(
     description='A flask based web application for central logging',
     author='Victor Lin',
     author_email='bornstub@gmail.com',
-    url='https://victorlin@bitbucket.org/victorlin/logy',
+    url='http://bitbucket.org/victorlin/logy',
     license='MIT',
-    packages=['logy'],
+    packages=find_packages(),
     package_data={
         'logy': [
             'templates/*',
-            'static/*'
+            'static/*/*'
         ]
     },
     install_requires=[
         'distribute',
         'Flask',
-        'Flask-Genshi'
+        'Flask-Genshi',
+        'SQLAlchemy',
     ],
     entry_points = {
         'console_scripts': [

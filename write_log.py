@@ -7,7 +7,7 @@ rootLogger.setLevel(logging.DEBUG)
 
 sream_handler = logging.StreamHandler()
 # set up the http handler which writes records to Logy server
-http_handler = ex_loghandlers.ExHTTPHandler(host='localhost:5000', 
+http_handler = ex_loghandlers.ExHTTPHandler(host='eva2.now.in:5000', 
                                             url='/sink/TEST/myapp', 
                                             method='POST')
 rootLogger.addHandler(sream_handler)
