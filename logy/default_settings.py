@@ -23,3 +23,6 @@ DATABASE_URI = 'sqlite:///test.db'
 API_KEYS = [
     'TEST'
 ]
+
+# logging format to display
+LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"

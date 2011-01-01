@@ -21,7 +21,8 @@
   
   <ul>
     <li py:for="record in records">
-      ${record.created} - [${record.levelname}] - ${record.name} - ${record.message}
+      ${ log_format % record.getDict() }
+      <pre py:if="record.traceback" py:content="record.traceback"></pre>
     </li>  
   </ul>
 </body>

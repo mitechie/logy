@@ -25,10 +25,10 @@ def writeLog(api_key, app_name):    if api_key not in app.config['API_KEYS']:
         host.apps.append(record_app)
         database.db_session.add(record_app)
         app.logger.info('Create new app %s of host %s', 
-                        record_app.name, host.ip)            created = None    if record_dict.get('created') is not None:        created = datetime.datetime.fromtimestamp(float(record_dict['created']))
+                        record_app.name, host.ip)            created = None    if record_dict.get('created') is not None:        created = datetime.datetime.fromtimestamp(float(record_dict['created']))            msecs = None    if record_dict.get('msecs') is not None:        msecs = float(record_dict['msecs'])
     record = tables.Record(
         name=record_dict.get('name'),
-        levelno=record_dict.get('levelno'),        levelname=record_dict.get('levelname'),        pathname=record_dict.get('pathname'),        filename=record_dict.get('filename'),        module=record_dict.get('module'),        funcName=record_dict.get('funcName'),        lineno=record_dict.get('lineno'),        created=created,        thread=record_dict.get('thread'),        threadName=record_dict.get('threadName'),        process=record_dict.get('process'),        processName=record_dict.get('processName'),        message=record_dict.get('message'),
+        levelno=record_dict.get('levelno'),        levelname=record_dict.get('levelname'),        pathname=record_dict.get('pathname'),        filename=record_dict.get('filename'),        module=record_dict.get('module'),        funcName=record_dict.get('funcName'),        lineno=record_dict.get('lineno'),        created=created,        msecs=msecs,        thread=record_dict.get('thread'),        threadName=record_dict.get('threadName'),        process=record_dict.get('process'),        processName=record_dict.get('processName'),        message=record_dict.get('message'),
         username=record_dict.get('_ex_username'),        traceback=record_dict.get('_ex_traceback')
     )
     record_app.records.append(record)

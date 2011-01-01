@@ -23,6 +23,7 @@ class Record(database.Base):
     funcName = Column(Unicode(), nullable=False)
     lineno = Column(Integer())
     created = Column(DateTime(), nullable=False)
+    msecs = Column(Float(), nullable=False)
     thread = Column(Integer())
     threadName = Column(Unicode())
     process = Column(Integer())
@@ -35,6 +36,12 @@ class Record(database.Base):
     def __init__(self, **kwargs):
         for key, value in kwargs.iteritems():
             setattr(self, key, value)
+            
+    def getDict(self):
+        d = self.__dict__
+        t = self.created.strftime("%Y-%m-%d %H:%M:%S")
+        d['asctime'] = "%s,%03d" % (t, self.msecs)
+        return d
             
 class App(database.Base):
     __tablename__ = 'app'

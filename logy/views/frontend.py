@@ -13,10 +13,14 @@ def index():
 
 @frontend.route('/view_record/<host_ip>/<app_name>')
 def view_record(host_ip, app_name):
-    app = tables.App.query.filter_by(host_ip=host_ip, name=app_name).first()
-    if app is None:
+    log_app = tables.App.query.filter_by(host_ip=host_ip, name=app_name).first()
+    if log_app is None:
         abort(404)
     hosts = tables.Host.query
-    records = app.records
+    records = log_app.records
+    log_format = app.config['LOG_FORMAT']
     return render_response('view_record.html', 
-                           dict(app=app, records=records, hosts=hosts))
+                           dict(app=log_app, 
+                                records=records, 
+                                hosts=hosts, 
+                                log_format=log_format))
