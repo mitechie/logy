@@ -9,14 +9,36 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <title py:replace="''">Your title goes here</title>
     <meta py:replace="select('*')"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="${url_for('static', filename='css/style.css')}" />
+    <link rel="stylesheet" 
+          type="text/css" 
+          media="screen" 
+          href="${url_for('static', filename='css/style.css')}" 
+    />
 </head>
 
 <body py:match="body" py:attrs="select('@*')">
 
+  <h1>Logy - The central log system</h1>
+
   <div py:for="category, msg in get_flashed_messages(with_categories=True)">
     <p class="flash-${ category }">${ msg }</p>
   </div>
+  
+  <h3>Hosts</h3>
+  <p py:if="not hosts.count()">
+    No available records
+  </p>
+  <ul py:if="hosts.count()">
+    <li py:for="host in hosts">
+      ${host.ip} - ${host.name} 
+      <ul>
+        <li py:for="app in host.apps">
+          <a href="${ url_for('view_record', host_ip=app.host_ip, app_name=app.name) }"
+          >${app.name}</a>
+        </li>  
+      </ul>
+    </li>
+  </ul>
 
   <div py:replace="select('*|text()')"/>
   

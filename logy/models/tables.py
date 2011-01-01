@@ -6,10 +6,11 @@ from logy.models import database
 
 class Record(database.Base):
     __tablename__ = 'record'
+    
     id = Column(Integer, primary_key=True)
     app_name = Column(Unicode(32), 
         ForeignKey('app.name', onupdate='CASCADE', ondelete='CASCADE'), 
-        nullable=False)
+        nullable=False, index=True)
 
     # Refnerence to:
     # http://docs.python.org/library/logging.html#formatter-objects
@@ -38,10 +39,11 @@ class Record(database.Base):
 class App(database.Base):
     __tablename__ = 'app'
     
-    name = Column(Unicode(32), primary_key=True)
+    id = Column(Integer, primary_key=True)
     host_ip = Column(Unicode(32), 
         ForeignKey('host.ip', onupdate='CASCADE', ondelete='CASCADE'), 
-        nullable=False)
+        nullable=False, index=True)
+    name = Column(Unicode(32), index=True)
     
     records = relationship("Record", backref="app")
 
@@ -52,7 +54,7 @@ class Host(database.Base):
     __tablename__ = 'host'
     
     ip = Column(String(32), primary_key=True)
-    name = Column(Unicode())
+    name = Column(Unicode(), index=True)
     
     apps = relationship("App", backref="host")
 

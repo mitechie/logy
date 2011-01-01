@@ -11,15 +11,15 @@ def writeLog(api_key, app_name):    if api_key not in app.config['API_KEYS']:
     record_dict = {}
     for key, value in request.form.iteritems():
         record_dict[key] = value
-    
-    host = tables.Host.query.get(request.remote_addr)
+        host_ip = request.remote_addr
+    host = tables.Host.query.get(host_ip)
     if host is None:
-        host = tables.Host(ip=request.remote_addr, 
+        host = tables.Host(ip=host_ip, 
                            name=record_dict.get('_ex_hostname'))
         database.db_session.add(host)
         app.logger.info('Create new host %s with name %s', host.ip, host.name)
     
-    record_app = tables.App.query.get(app_name)
+    record_app = tables.App.query. \        filter_by(host_ip=host_ip, name=app_name).first()
     if record_app is None:
         record_app = tables.App(app_name)
         host.apps.append(record_app)

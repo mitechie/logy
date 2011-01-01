@@ -12,6 +12,17 @@
 </head>
 
 <body>
-
+  <h3>
+    Records of ${ app.name }@${ app.host.ip }
+    <span py:if="app.host.name" py:strip="app.host.name">
+        (${ app.host.name })
+    </span>
+  </h3>
+  
+  <ul>
+    <li py:for="record in records">
+      ${record.created} - [${record.levelname}] - ${record.name} - ${record.message}
+    </li>  
+  </ul>
 </body>
 </html>
