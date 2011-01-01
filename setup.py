@@ -21,6 +21,14 @@ try:
     }
 except ImportError:
     pass
+
+try:
+    file = open('README.rst', 'rt')
+    content = file.read()
+    file.close()
+    extra['long_description'] = content
+except IOError:
+    pass
     
 setup(
     name='logy',
